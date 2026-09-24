@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Veronika Putri</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        /* Custom CSS & Styling */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #212529;
+            --card-bg: #f8f9fa;
+        }
+
+        [data-bs-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            padding: 120px 0 80px 0;
+            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            color: white;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* Styling Efek Flip Card untuk Bagian Skill */
+        .flip-card {
+            background-color: transparent;
+            height: 220px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Styling AI Chat Widget */
+        #ai-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1050;
+        }
+
+        #ai-chat-box {
+            width: 310px;
+            position: absolute;
+            bottom: 65px;
+            right: 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #ai-messages .user-msg {
+            text-align: right;
+            margin-bottom: 8px;
+        }
+
+        #ai-messages .user-msg span {
+            background-color: #0d6efd;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px 12px 0 12px;
+            display: inline-block;
+            font-size: 0.85rem;
+        }
+
+        #ai-messages .bot-msg {
+            text-align: left;
+            margin-bottom: 8px;
+        }
+
+        #ai-messages .bot-msg span {
+            background-color: #e9ecef;
+            color: #212529;
+            padding: 6px 12px;
+            border-radius: 12px 12px 12px 0;
+            display: inline-block;
+            font-size: 0.85rem;
+        }
+
+        [data-bs-theme="dark"] #ai-messages .bot-msg span {
+            background-color: #2b3035;
+            color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Header / Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand fw-bold" href="#home">Veronk.</a>
+            
+            <div class="d-flex align-items-center">
+                <!-- Tombol Dark Mode -->
+                <button class="btn btn-outline-light btn-sm rounded-pill me-2" id="darkToggle">
+                    <i class="bi bi-moon-stars-fill"></i> Mode
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Home / Hero Section -->
+    <section id="home" class="hero-section text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <img src="https://i.postimg.cc/HkNM1Qw9/wmremove-transformed-(8).jpg" alt="Foto Vero" class="rounded-circle mb-3 border border-3 border-white shadow" style="width: 150px; height: 150px; object-fit: cover;">
+                    <h1 class="display-4 fw-bold mb-3">Halo, Saya Veronika Putri</h1>
+                    <p class="lead mb-4">Siswi XI TJKT 2 | Junior Developer & Creative Performer</p>
+                    <a href="#projects" class="btn btn-light btn-lg me-2 fw-semibold">Lihat Project</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg">Hubungi Saya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- 3. About / Profil Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4">About Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card p-4">
+                        <div class="row">
+                            <!-- Biodata Diri (Kiri) -->
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <h5><i class="bi bi-person-fill text-primary me-2"></i> Biodata Diri</h5>
+                                <ul class="list-unstyled mt-3 lh-lg">
+                                    <li><strong>Nama Lengkap:</strong> Veronika Putri</li>
+                                    <li><strong>Kelas:</strong> XI TJKT 2</li>
+                                    <li><strong>Tempat, TTL:</strong> Blitar, 7 November 2009</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Ringkasan (Kanan) -->
+                            <div class="col-md-6">
+                                <h5><i class="bi bi-info-circle-fill text-primary me-2"></i> Ringkasan</h5>
+                                <p class="mt-3 text-secondary">
+                                    Saya adalah seorang siswa yang aktif belajar di bidang teknik komputer, jaringan, dan pemrograman web. Selain ketertarikan pada dunia teknologi, saya juga menyukai ekspresi seni melalui musik dan tari.
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Favorite Songs (Link/Thumbnail ke YouTube) -->
+                        <div>
+                            <h5 class="mb-3"><i class="bi bi-music-note-list text-danger me-2"></i> Favorite Songs</h5>
+                            <div class="row g-3">
+                                
+                                <!-- Lagu 1 -->
+                                <div class="col-md-6">
+                                    <div class="card p-3 h-100 border shadow-sm">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-youtube text-danger display-6 me-3"></i>
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Multo - Cup of Joe</h6>
+                                                <a href="https://youtu.be/yu9_gcEsEkA?si=jM-PIW9DS3Z9UJXK" target="_blank" class="btn btn-sm btn-outline-danger mt-1">
+                                                    <i class="bi bi-box-arrow-up-right me-1"></i> Tonton di YouTube
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lagu 2 -->
+                                <div class="col-md-6">
+                                    <div class="card p-3 h-100 border shadow-sm">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-youtube text-danger display-6 me-3"></i>
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Merry Christmas, i miss you - Alex Crichton</h6>
+                                                <a href="https://youtu.be/izEkQ7ZFUoA?si=Lme9m28XbvK2vRb2" target="_blank" class="btn btn-sm btn-outline-danger mt-1">
+                                                    <i class="bi bi-box-arrow-up-right me-1"></i> Tonton di YouTube
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lagu 3 -->
+                                <div class="col-md-6">
+                                    <div class="card p-3 h-100 border shadow-sm">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-youtube text-danger display-6 me-3"></i>
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Nobody New - The Marías</h6>
+                                                <a href="https://youtu.be/ajKdCgK6i90?si=WvtrdZAvscssUSlx" target="_blank" class="btn btn-sm btn-outline-danger mt-1">
+                                                    <i class="bi bi-box-arrow-up-right me-1"></i> Tonton di YouTube
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lagu 4 -->
+                                <div class="col-md-6">
+                                    <div class="card p-3 h-100 border shadow-sm">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-youtube text-danger display-6 me-3"></i>
+                                            <div>
+                                                <h6 class="fw-bold mb-1">Hurts So Good - Astrid S</h6>
+                                                <a href="https://youtu.be/mIttLAFgrdU?si=Jdd94ahoiIKTA_4E" target="_blank" class="btn btn-sm btn-outline-danger mt-1">
+                                                    <i class="bi bi-box-arrow-up-right me-1"></i> Tonton di YouTube
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Skill Section (Interactive Flip Cards) -->
+    <section id="skills" class="bg-body-tertiary">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-2">Keahlian & Minat</h2>
+            <p class="text-center text-secondary mb-4"><small><i>(Klik kartu untuk melihat detail deskripsi)</i></small></p>
+            
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-code-slash display-3 text-primary mb-3"></i>
+                                <h5 class="fw-bold mb-0">Junior Developer</h5>
+                            </div>
+                            <div class="flip-card-back">
+                                <h6 class="fw-bold text-primary mb-2">Junior Developer</h6>
+                                <p class="text-secondary small mb-0">Mengikuti Google student ambasador dan sangat tertarik pada teknologi dan perkembangannya.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                       <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-music-note-beamed display-3 text-danger mb-3"></i>
+                                <h5 class="fw-bold mb-0">Bermain Musik</h5>
+                            </div>
+                            <div class="flip-card-back">
+                                <h6 class="fw-bold text-danger mb-2">Bermain Musik</h6>
+                                <p class="text-secondary small mb-0">Mampu memainkan instrumen musik untuk mengekspresikan nada dan lagu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-mic-fill display-3 text-warning mb-3"></i>
+                                <h5 class="fw-bold mb-0">Bernyanyi</h5>
+                            </div>
+                            <div class="flip-card-back">
+                                <h6 class="fw-bold text-warning mb-2">Bernyanyi</h6>
+                                <p class="text-secondary small mb-0">Memiliki minat dalam seni vokal dan membawakan berbagai genre lagu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="bi bi-person-walking display-3 text-success mb-3"></i>
+                                <h5 class="fw-bold mb-0">Dance</h5>
+                            </div>
+                            <div class="flip-card-back">
+                                <h6 class="fw-bold text-success mb-2">Dance</h6>
+                                <p class="text-secondary small mb-0">Dapat menampilkan gerakan dan irama dengan terampil.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Project Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4">Daftar Project</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Web Portofolio Pribadi</h5>
+                            <p class="card-text text-secondary">Website profil interaktif dan responsif yang dibangun menggunakan framework Bootstrap 5.</p>
+                            <span class="badge bg-primary">HTML</span>
+                            <span class="badge bg-success">CSS</span>
+                            <span class="badge bg-warning text-dark">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Aplikasi Kasir Sederhana</h5>
+                            <p class="card-text text-secondary">Aplikasi web statis untuk simulasi transaksi kasir dengan perhitungan diskon otomatis.</p>
+                            <span class="badge bg-primary">HTML</span>
+                            <span class="badge bg-danger">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Simulasi Topologi Jaringan</h5>
+                            <p class="card-text text-secondary">Rancangan dan simulasi jaringan komputer lokal menggunakan Cisco Packet Tracer.</p>
+                            <span class="badge bg-info text-dark">Networking</span>
+                            <span class="badge bg-secondary">Packet Tracer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Contact Section -->
+    <section id="contact" class="bg-body-tertiary">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4">Informasi Kontak</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+                            <strong>Email:</strong> 
+                            <a href="mailto:veronikaputri2009@gmail.com" class="text-decoration-none">veronikaputri2009@gmail.com</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="bi bi-instagram text-danger me-2"></i>
+                            <strong>Instagram:</strong> 
+                            <a href="https://instagram.com/jstvrnk" target="_blank" class="text-decoration-none">@jstvrnk</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="bi bi-github me-2"></i>
+                            <strong>GitHub:</strong> 
+                            <a href="https://github.com/whyvlra-sketch" target="_blank" class="text-decoration-none">github.com/whyvlra-sketch</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="bi bi-geo-alt-fill text-success me-2"></i>
+                            <strong>Lokasi:</strong> 
+                            <a href="https://maps.app.goo.gl/RXxgRkuBCUt3cYHL9" target="_blank" class="text-decoration-none">Kota Blitar, Jawa Timur</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Floating Widget -->
+    <div id="ai-widget">
+        <button id="ai-toggle-btn" class="btn btn-primary rounded-circle shadow-lg p-3">
+            <i class="bi bi-robot fs-4"></i>
+        </button>
+
+        <div id="ai-chat-box" class="card shadow-lg d-none">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <span class="fw-bold"><i class="bi bi-robot me-2"></i>Vero Assistant AI</span>
+                <button id="ai-close-btn" class="btn-close btn-close-white btn-sm"></button>
+            </div>
+            <div class="card-body overflow-auto" id="ai-messages" style="height: 250px;">
+                <div class="bot-msg">
+                    <span>Halo! Saya asisten AI Veronika. Ada yang ingin ditanyakan tentang Vero? (misal: "profil", "keahlian", "project", atau "kontak")</span>
+                </div>
+            </div>
+            <div class="card-footer p-2">
+                <div class="input-group">
+                    <input type="text" id="ai-input" class="form-control form-control-sm" placeholder="Tanya sesuatu...">
+                    <button id="ai-send-btn" class="btn btn-primary btn-sm"><i class="bi bi-send-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">&copy; 2026 Veronika Putri. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+
+    <!-- Fitur Interaktif JavaScript (Dark Mode Toggle & AI Assistant) -->
+    <script>
+        const darkToggleBtn = document.getElementById('darkToggle');
+        
+        darkToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-bs-theme', 'light');
+                darkToggleBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i> Dark Mode';
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+                darkToggleBtn.innerHTML = '<i class="bi bi-sun-fill"></i> Light Mode';
+            }
+        });
+
+        /* Logic Asisten AI */
+        const aiToggleBtn = document.getElementById('ai-toggle-btn');
+        const aiCloseBtn = document.getElementById('ai-close-btn');
+        const aiChatBox = document.getElementById('ai-chat-box');
+        const aiSendBtn = document.getElementById('ai-send-btn');
+        const aiInput = document.getElementById('ai-input');
+        const aiMessages = document.getElementById('ai-messages');
+
+        aiToggleBtn.addEventListener('click', () => aiChatBox.classList.toggle('d-none'));
+        aiCloseBtn.addEventListener('click', () => aiChatBox.classList.add('d-none'));
+
+        function sendAiMessage() {
+            const query = aiInput.value.trim();
+            if (!query) return;
+
+            appendAiMsg(query, 'user-msg');
+            aiInput.value = '';
+
+            setTimeout(() => {
+                const response = getVeroAiResponse(query.toLowerCase());
+                appendAiMsg(response, 'bot-msg');
+            }, 300);
+        }
+
+        aiSendBtn.addEventListener('click', sendAiMessage);
+        aiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendAiMessage();
+        });
+
+        function appendAiMsg(text, msgClass) {
+            const div = document.createElement('div');
+            div.className = msgClass;
+            div.innerHTML = `<span>${text}</span>`;
+            aiMessages.appendChild(div);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+
+       function getVeroAiResponse(input) {
+            // Helper untuk mengambil jawaban acak
+            const randomReply = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+            // 1. Sapaan & Obrolan Ringan
+            if (input.includes('halo') || input.includes('hai') || input.includes('p') || input.includes('helo') || input.includes('hi')) {
+                return randomReply([
+                    "Hai! 👋 Ada yang bisa dibantu tentang profil Vero?",
+                    "Halo! Selamat datang di portofolio Vero. Mau tanya apa nih?",
+                    "Hai juga! Aku Vero Assistant. Bebas mau tanya seputar skill, project, atau kontak Vero ya!"
+                ]);
+            } 
+            
+            // 2. Profil / Biodata
+            else if (input.includes('siapa') || input.includes('profil') || input.includes('nama') || input.includes('biodata') || input.includes('tentang')) {
+                return randomReply([
+                    "Ini Veronika Putri, siswi kelas XI TJKT 2 SMKN 1 Blitar (lahir Blitar, 7 Nov 2009). Suka dunia coding, IT networking, musik, dan dance! ✨",
+                    "Vero itu siswi TJKT yang lagi fokus memperdalam web development & jaringan, tapi juga aktif di dunia musik dan dance. Kenalan lebih lanjut yuk!"
+                ]);
+            } 
+
+            // 3. Sekolah & Jurusan
+            else if (input.includes('sekolah') || input.includes('kelas') || input.includes('jurusan') || input.includes('smk')) {
+                return randomReply([
+                    "Vero sekolah di SMKN 1 Blitar, jurusan Teknik Komputer dan Jaringan (TJKT), kelas XI TJKT 2! 💻",
+                    "Saat ini Vero duduk di kelas XI TJKT 2 SMKN 1 Blitar."
+                ]);
+            }
+
+            // 4. Skill & Keahlian
+            else if (input.includes('skill') || input.includes('keahlian') || input.includes('bisa') || input.includes('hobi')) {
+                return randomReply([
+                    "Vero jago di bidang Junior Web Dev (HTML, CSS, JS, Bootstrap) & Cisco Packet Tracer. Selain IT, Vero juga suka main musik, nyanyi, dan dance! 🎶",
+                    "Gak cuma coding dan jaringan, Vero juga punya bakat di seni musik dan tari lho!"
+                ]);
+            } 
+
+            // 5. Project & Karya
+            else if (input.includes('project') || input.includes('proyek') || input.includes('karya') || input.includes('buat')) {
+                return randomReply([
+                    "Beberapa project keren Vero diantaranya: Web Portofolio Interaktif, Aplikasi Kasir Sederhana dengan diskon otomatis, dan Simulasi Topologi Jaringan! 🚀",
+                    "Vero udah bikin beberapa project seperti web kasir JS, rancangan jaringan Cisco, dan web portofolio ini."
+                ]);
+            } 
+
+            // 6. Musik / Lagu Favorit
+            else if (input.includes('lagu') || input.includes('musik') || input.includes('song')) {
+                return randomReply([
+                    "Lagu favorit Vero diantaranya ada 'Multo' dari Cup of Joe, 'Nobody New', dan 'Hurts So Good'. Cek di bagian About Me buat dengering langsung ya! 🎧",
+                    "Vero suka banget mendengarkan musik! Beberapa playlist favoritnya udah terpasang di section About Me."
+                ]);
+            }
+
+            // 7. Kontak & Sosmed
+            else if (input.includes('kontak') || input.includes('email') || input.includes('instagram') || input.includes('ig') || input.includes('github') || input.includes('hubungi')) {
+                return randomReply([
+                    "Kamu bisa hubungi Vero via Email: veronikaputri2009@gmail.com, IG: @jstvrnk, atau kepoin kodingannya di GitHub: whyvlra-sketch! 📩",
+                    "Langsung gaskeun kontak ke IG @jstvrnk atau email di veronikaputri2009@gmail.com ya!"
+                ]);
+            } 
+
+            // 8. Status
+            else if (input.includes('status') || input.includes('pacar') || input.includes('suka')) {
+                return "Ssstt... Vero udah punya seseorang yang disukai nih, namanya Bima dari kelas 11 TAV 1! 🤫✨";
+            } 
+
+            // 9. Terima Kasih
+            else if (input.includes('makasih') || input.includes('terima kasih') || input.includes('thanks') || input.includes('thx')) {
+                return randomReply([
+                    "Sama-sama! Senang bisa membantu 😊",
+                    "Yup, santai aja! Ada yang mau ditanyain lagi?",
+                    "Anytime! Semoga portofolio Vero berkesan ya ✨"
+                ]);
+            }
+
+            // 10. Default Response (kalau AI tidak paham)
+            else {
+                return randomReply([
+                    "Wah, aku belum terlalu paham nih... 🤔 Coba tanyakan seputar 'profil', 'skill', 'project', 'lagu favorit', atau 'kontak' Vero ya!",
+                    "Waduh, pertanyaanmu di luar jangkauanku. Coba tanya tentang sekolah, skill, atau project Vero!"
+                ]);
+            }
+        }
+    </script>
+</body>
+</html>
