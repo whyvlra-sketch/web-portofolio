@@ -43,6 +43,16 @@
             transition: transform 0.2s;
         }
 
+        .project-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15) !important;
+        }
+
         section {
             padding: 60px 0;
         }
@@ -162,6 +172,7 @@
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#saran">Saran</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -365,43 +376,93 @@
         <div class="container">
             <h2 class="text-center fw-bold mb-4">Daftar Project</h2>
             <div class="row g-4">
+                <!-- Proyek 1: Web Portofolio -->
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Web Portofolio Pribadi</h5>
-                            <p class="card-text text-secondary">Website profil interaktif dan responsif yang dibangun menggunakan framework Bootstrap 5.</p>
-                            <span class="badge bg-primary">HTML</span>
-                            <span class="badge bg-success">CSS</span>
-                            <span class="badge bg-warning text-dark">Bootstrap</span>
+                    <a href="https://github.com/whyvlra-sketch/web-portofolio" target="_blank" class="text-decoration-none color-inherit">
+                        <div class="card h-100 project-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title fw-bold text-body mb-0">Web Portofolio Pribadi</h5>
+                                    <i class="bi bi-box-arrow-up-right text-primary"></i>
+                                </div>
+                                <p class="card-text text-secondary">Website profil interaktif dan responsif yang dibangun menggunakan framework Bootstrap 5.</p>
+                                <span class="badge bg-primary">HTML</span>
+                                <span class="badge bg-success">CSS</span>
+                                <span class="badge bg-warning text-dark">Bootstrap</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
+
+                <!-- Proyek 2: Mesin Kasir -->
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Aplikasi Kasir Sederhana</h5>
-                            <p class="card-text text-secondary">Aplikasi web statis untuk simulasi transaksi kasir dengan perhitungan diskon otomatis.</p>
-                            <span class="badge bg-primary">HTML</span>
-                            <span class="badge bg-danger">JavaScript</span>
+                    <a href="https://github.com/whyvlra-sketch/Mesin-Kasir" target="_blank" class="text-decoration-none color-inherit">
+                        <div class="card h-100 project-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title fw-bold text-body mb-0">Aplikasi Kasir Sederhana</h5>
+                                    <i class="bi bi-box-arrow-up-right text-primary"></i>
+                                </div>
+                                <p class="card-text text-secondary">Aplikasi web statis untuk simulasi transaksi kasir dengan perhitungan diskon otomatis.</p>
+                                <span class="badge bg-primary">HTML</span>
+                                <span class="badge bg-danger">JavaScript</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
+
+                <!-- Proyek 3: Python Love -->
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Simulasi Topologi Jaringan</h5>
-                            <p class="card-text text-secondary">Rancangan dan simulasi jaringan komputer lokal menggunakan Cisco Packet Tracer.</p>
-                            <span class="badge bg-info text-dark">Networking</span>
-                            <span class="badge bg-secondary">Packet Tracer</span>
+                    <a href="https://github.com/whyvlra-sketch/python.love" target="_blank" class="text-decoration-none color-inherit">
+                        <div class="card h-100 project-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title fw-bold text-body mb-0">Python Love</h5>
+                                    <i class="bi bi-box-arrow-up-right text-primary"></i>
+                                </div>
+                                <p class="card-text text-secondary">Kumpulan skrip dan program kreatif dalam bahasa Python untuk eksperimen logika dan tampilan teks.</p>
+                                <span class="badge bg-info text-dark">Python</span>
+                                <span class="badge bg-secondary">CLI / Script</span>
+                            </div>
                         </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Kolom Saran Section -->
+    <section id="saran" class="bg-body-tertiary">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4">Kritik & Saran</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card p-4">
+                        <form action="https://formspree.io/f/xppqqwal" method="POST"></form>
+                            <div class="mb-3">
+                                <label for="saranNama" class="form-label fw-bold">Nama</label>
+                                <input type="text" class="form-control" id="saranNama" name="name" placeholder="Masukkan nama kamu" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="saranEmail" class="form-label fw-bold">Email</label>
+                                <input type="email" class="form-control" id="saranEmail" name="email" placeholder="nama@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="saranPesan" class="form-label fw-bold">Pesan / Saran</label>
+                                <textarea class="form-control" id="saranPesan" name="message" rows="4" placeholder="Tuliskan kritik atau saran kamu di sini..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 fw-bold">
+                                <i class="bi bi-send-fill me-2"></i>Kirim Saran
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. Contact Section -->
-    <section id="contact" class="bg-body-tertiary">
+    <!-- 7. Contact Section -->
+    <section id="contact">
         <div class="container">
             <h2 class="text-center fw-bold mb-4">Informasi Kontak</h2>
             <div class="row justify-content-center">
@@ -558,8 +619,8 @@
             // 5. Project & Karya
             else if (input.includes('project') || input.includes('proyek') || input.includes('karya') || input.includes('buat')) {
                 return randomReply([
-                    "Beberapa project keren Vero diantaranya: Web Portofolio Interaktif, Aplikasi Kasir Sederhana dengan diskon otomatis, dan Simulasi Topologi Jaringan! 🚀",
-                    "Vero udah bikin beberapa project seperti web kasir JS, rancangan jaringan Cisco, dan web portofolio ini."
+                    "Beberapa project keren Vero diantaranya: Web Portofolio Interaktif, Aplikasi Kasir Sederhana dengan diskon otomatis, dan Python Love! 🚀",
+                    "Vero udah bikin beberapa project seperti web kasir JS, program Python, dan web portofolio ini."
                 ]);
             } 
 
